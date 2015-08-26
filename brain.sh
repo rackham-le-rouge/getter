@@ -56,9 +56,15 @@ function test_variable
 
 echo -e "Program starting...\n"
 
+# User may want to use the previous-one cookie. Maybee it is still OK
+if [ "$1" = "--old-cookie" ]; then
+    cookie=`cat cookie.jar | sed -e 's/[a-zA-Z0-9./]*\s//g'`
+    echo "Getted cookie is " $cookie
+fi
+
 
 # init. Get back a cookie
-if [ $cookie -z ]; then
+if [ "$cookie" = "" ]; then
     if [ -f cookie.jar ]; then
         rm -f cookie.jar
     fi
