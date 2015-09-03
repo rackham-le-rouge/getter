@@ -123,6 +123,8 @@ do
 
     # comlete line is too much... have to parse it before
     if [ -z $taux_remplissage ]; then
+        echo "No answer available, get a new cookie in 300s"
+        sleep 300
         rm -r cookie.jar
         getanewcookie
     else
