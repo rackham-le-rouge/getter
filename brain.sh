@@ -82,7 +82,7 @@ fi
 
 # infinite loop. Use cookie, get the string, parse it, validate if availaible or get a new cookie if broken.
 # for a random time and after restart the loop again
-while [[ $result != "" ]]
+while [[ 1 ]]
 do
     # set variables for this turn - one turn, one search
     index_in_the_table=`expr $index_in_the_table + 1`
@@ -140,9 +140,10 @@ do
 
             array_have_to[$index_in_the_table]=0
         fi
+
+        echo -e "\n\nStatus of the object (Date:"$depart_day"/"$depart_month"/"$depart_year" "$DEP" -> "$DEST" num "$obj_num"): " $check_status
     fi
 
-    echo -e "\n\nStatus of the object (Date:"$depart_day"/"$depart_month"/"$depart_year" "$DEP" -> "$DEST" num "$obj_num"): " $check_status
 
     sleep  $(( ( RANDOM % 40 )  + 21 ))
 done
