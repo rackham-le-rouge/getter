@@ -90,11 +90,16 @@ do
         index_in_the_table=0
     fi
 
+    watchdog=0
     while [[ ${array_have_to[$index_in_the_table]} -ne 1 ]]
     do
         index_in_the_table=`expr $index_in_the_table + 1`
         if [ $index_in_the_table -eq 5 ]; then
+            watchdog=`expr $watchdog + 1`
             index_in_the_table=0
+        fi
+        if [ $watchdog -ge 3 ]; then
+            exit 0
         fi
     done
 
